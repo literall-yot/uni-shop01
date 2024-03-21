@@ -12,6 +12,20 @@
 		"path": "pages/my/my",
 		"style": {}
 	}],
+	"subPackages":[
+		{
+			"root":"subpkg",
+			"pages":[{
+                    "path" : "good_detail/good_detail",
+                    "style" : {}
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" : {}
+                }
+            ]
+		}
+	],
 	"tabBar":{
 		"selectedColor":"#C00000",
 		"list":[
