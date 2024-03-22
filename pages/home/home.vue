@@ -70,11 +70,9 @@
 				res.message.forEach(item=>{
 					item.product_list.forEach(item2=>{
 						item2.url=item2.navigator_url.replace(/\/pages\/goods_list/,'/subpkg/goods_list/goods_list');
-					// console.log(item2.navigator_url.replace(/\/pages\/goods_list/,'/subpkg/goods_list/goods_list'));
-					})
-				})
+					});
+				});
 				this.floorList=res.message;
-				console.log(res.message[0]);
 			},
 			onClickHandle(item){
 				if(item.name=='分类') {
