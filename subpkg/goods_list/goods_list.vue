@@ -32,7 +32,6 @@
 				if(res.meta.status!==200) return uni.$showMsg()
 				this.goodslist=[...this.goodslist,...res.message.goods];
 				this.total=res.message.total;
-				console.log(this.goodslist[0]);
 			},
 			// 跳转到商品详情页
 			goToDetail(item){
