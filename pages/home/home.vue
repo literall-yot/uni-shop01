@@ -1,5 +1,9 @@
 <template>
 	<view class="home">
+		<!-- 搜索模块 -->
+		<view class="search-box">
+			<my-search @click="goToSearch"></my-search>
+		</view>
 		<!-- 轮播图区域 -->
 		<swiper :indicator-dots="true" indicator-color="#ccc" indicator-active-color="#fff" :autoplay="true" :interval="1500" :duration="1000" circular>
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
@@ -73,6 +77,7 @@
 					});
 				});
 				this.floorList=res.message;
+				// console.log(this.floorList[0].product_list[1]);
 			},
 			onClickHandle(item){
 				if(item.name=='分类') {
@@ -80,6 +85,12 @@
 						url:'../cate/cate'
 					})
 				}
+			},
+			// 跳转到搜索页
+			goToSearch(){
+				uni.navigateTo({
+					url:'../../subpkg/search/search'
+				})
 			}
 		},
 		onLoad() {
@@ -104,7 +115,7 @@
 	.nav-list{
 		display:flex;
 		justify-content: space-around;
-		background-color: pink;
+		background-color: #fff;
 		.nav-item{
 			margin: 15rpx 0;
 			image{
@@ -137,5 +148,12 @@
 				}
 			}
 		}
+	}
+	
+	// 搜索模块
+	.search-box{
+		position: sticky;
+		top: 0;
+		z-index: 999;
 	}
 </style>

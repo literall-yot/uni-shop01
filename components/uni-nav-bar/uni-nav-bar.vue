@@ -65,6 +65,12 @@
 			uniStatusBar,
 			uniIcons
 		},
+		data(){
+			return {
+				show:true,
+				showSync:true
+			}
+		},
 		props: {
 			title: {
 				type: String,

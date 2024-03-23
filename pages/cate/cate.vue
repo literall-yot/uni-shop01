@@ -1,5 +1,6 @@
 <template>
 	<view class="cates">
+		<my-search :bgColor="'#C00000'" :borderRadius="10" @click="goToSearch"></my-search>
 		<view class="cates_container">
 			<scroll-view scroll-y="true" class="left-menu" :style="{height: wh+'px'}">
 				<block v-for="(item,i) in cateList" :key="item.cat_id">
@@ -47,7 +48,6 @@
 				if(res.meta.status!==200) return uni.$showMsg();
 				this.cateList=res.message;
 				this.cate_leval_2=res.message[0].children;
-				console.log(this.cate_leval_2[0]);
 			},
 			changeActive(i){
 				this.active=i;
@@ -59,12 +59,17 @@
 				uni.navigateTo({
 					url:'../../subpkg/goods_list/goods_list?cid='+obj.cat_id
 				})
-				console.log(obj);
+			},
+			// 跳转到搜索页
+			goToSearch(){
+				uni.navigateTo({
+					url:'../../subpkg/search/search'
+				})
 			}
 		},
 		onLoad() {
 			const sysInfo=uni.getSystemInfoSync();
-			this.wh=sysInfo.windowHeight;
+			this.wh=sysInfo.windowHeight-50;
 			// 调用分类列表数据的方法
 			this.getCateList()
 		}
