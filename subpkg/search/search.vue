@@ -7,7 +7,7 @@
 		</view>
 		<!-- 搜索列表 -->
 		<view class="sugg-list" v-if="searchList.length>0">
-			<view class="sugg-item" v-for="(item,i) in searchList" :key="i" @click="goToDetail(item)">
+			<view class="sugg-item" v-for="(item,i) in searchList" :key="i" @click="goToGoodsList(item.goods_name)">
 				<text class="sugg-name">{{item.goods_name}}</text>
 				<uni-icons type="forward" size="16"></uni-icons>
 			</view>
