@@ -28,7 +28,10 @@
 </template>
 
 <script>
+	import badgeMax from '../../mixins/tabbar-badge.js'
+	
 	export default {
+		mixins:[badgeMax],
 		data() {
 			return {
 				// 当前屏幕可用高度

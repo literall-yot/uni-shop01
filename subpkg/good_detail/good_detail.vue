@@ -27,7 +27,7 @@
 					</view>
 				</view>
 				<!-- 运费 -->
-				<view class="fare">快递：免运费</view>
+				<view class="fare">快递：免运费---{{cart.length}}</view>
 			</view>
 		</view>
 		<!-- 更多信息 -->
@@ -42,7 +42,23 @@
 </template>
 
 <script>
+	import {mapState,mapMutations,mapGetters} from 'vuex'
 	export default {
+		computed:{
+			...mapState('m_cart',['cart']),
+			...mapGetters('m_cart',['total'])
+		},
+		watch:{
+			total:{
+				handler(newTotal){
+					const findResult=this.options.find(x=>x.text==='购物车');
+					if(findResult){
+						findResult.info=newTotal
+					}
+				},
+				immediate:true
+			}
+		},
 		data() {
 			return {
 				goods_info: {},
@@ -73,6 +89,7 @@
 			};
 		},
 		methods: {
+			...mapMutations('m_cart',['addToCart']),
 			// 获取商品详情数据
 			async getGoodsDetail(goods_id) {
 				const {
@@ -84,7 +101,7 @@
 				res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display:block;"').replace(
 					/webp/g, 'jpg');
 				this.goods_info = res.message;
-				console.log(res.message);
+				// console.log(Object.entries(res.message));
 			},
 			// 实现图片预览
 			preview(i) {
@@ -98,15 +115,22 @@
 					title: `点击${e.content.text}`,
 					icon: 'none'
 				})
+				uni.switchTab({
+					url:'../../pages/cart/cart'
+				})
 			},
 			buttonClick(e) {
-				console.log(e)
 				if(e.content.text==="加入购物车") {
-					uni.switchTab({
-						url:'../../pages/cart/cart'
-					})
+					const goods={
+						goods_id:this.goods_info.goods_id,
+						goods_name:this.goods_info.goods_name,
+						goods_price:this.goods_info.goods_price,
+						goods_count:1,
+						goods_small_logo:this.goods_info.goods_small_logo,
+						goods_state:true
+					}
+					this.addToCart(goods);
 				}
-				this.options[2].info++
 			}
 		},
 		onLoad(option) {
@@ -120,7 +144,6 @@
 	// 轮播图
 	swiper-item {
 		width: 750rpx;
-
 		image {
 			display: block;
 			width: 750rpx;
@@ -136,7 +159,6 @@
 			margin: 10px;
 			color: #C00000;
 		}
-
 		.goods-info-body {
 			.descript {
 				display: flex;
@@ -145,7 +167,6 @@
 					font-size: 13px;
 					margin-right: 10px;
 				}
-
 				.favio {
 					width: 120px;
 					display: flex;
