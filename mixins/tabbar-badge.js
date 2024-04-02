@@ -6,7 +6,11 @@ export default {
 	},
 	onShow() {
 		this.setBadge()
-		// console.log(this.total);
+	},
+	watch:{
+		total(){
+			this.setBadge()
+		}
 	},
 	methods:{
 		setBadge(){

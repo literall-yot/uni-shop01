@@ -65,7 +65,7 @@
 		padding: 10px 5px;
 		border-bottom: 1px solid #f0f0f0;
 		display: flex;
-
+		margin-bottom: 50px;
 		.goods-item-left {
 			display: flex;
 			justify-content: space-between;
@@ -83,7 +83,7 @@
 			flex-direction: column;
 			justify-content: space-between;
 			flex: 1;
-
+			width: 231px;
 			.goods-item-name {
 				font-size: 12px;
 			}
