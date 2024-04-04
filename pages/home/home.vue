@@ -31,7 +31,7 @@
 					</navigator>
 					<!-- 右侧图片 -->
 					<view class="right-img-box">
-						<navigator v-for="(item2,i2) in item.product_list.slice(1)" :url="item2.url">
+						<navigator v-for="(item2,i2) in item.product_list" :url="item2.url" v-if="i2>0">
 							<image :src="item2.image_src" mode="widthFix" :style="{width:item2.image_width+'rpx'}"></image>
 						</navigator>
 					</view>

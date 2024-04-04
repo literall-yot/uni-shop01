@@ -51,7 +51,7 @@ export default {
 		checkedCount(state){
 			return state.cart.filter(item=>item.goods_state===true).reduce((t,i)=>t+=i.goods_count,0)
 		},
-		// 已选shang'pin'de 总价格
+		// 已选商品总价格
 		checkedGoodsPrice(state){
 			return state.cart.filter(x=>x.goods_state==true).reduce((p,item)=>p+=item.goods_count*item.goods_price,0).toFixed(2);
 		}

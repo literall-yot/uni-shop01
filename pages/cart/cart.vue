@@ -73,7 +73,6 @@
 			}
 		},
 		onLoad() {
-			console.log(this.cart[0]);
 		}
 	}
 </script>
